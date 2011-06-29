@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'rusic/cli'
+require 'rusic'
 Rusic::CLI.start
