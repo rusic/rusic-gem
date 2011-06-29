@@ -1,5 +1,5 @@
 require "rusic/version"
 
 module Rusic
-  # Your code goes here...
+  autoload :Server, 'rusic/server'
 end
