@@ -1,0 +1,17 @@
+<ol id="ideas">
+  {% for idea in rusic.ideas %}
+    <li class="idea" id="idea-{{idea.id}}">
+
+      <h2>{{idea.title}}</h2>
+
+      <div class="meta">
+        <span class="date created">{{idea.created_at}}</span>
+      </div>
+
+      <div class="content markdown">
+        {{markdown idea.content}}
+      </div>
+
+    </li>
+  {% endfor %}
+</ol>

@@ -5,5 +5,10 @@ Feature: Rusic
 
   Scenario: New project
     When I run `rusic new example`
-    Then the output should contain "ideas"
-
+    Then the following files should exist:
+      | example/layouts/subdomain.html.liquid |
+      | example/ideas/index.html.liquid       |
+      | example/ideas/new.html.liquid         |
+      | example/ideas/show.html.liquid        |
+      | example/ideas/edit.html.liquid        |
+    And the file "example/layouts/subdomain.html.liquid" should contain "{{yield}}"
