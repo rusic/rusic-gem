@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 
-puts "ideas"
+require 'rusic/cli'
+Rusic::CLI.start
