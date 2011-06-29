@@ -9,9 +9,9 @@ Gem::Specification.new do |gem|
   gem.homepage      = ''
 
   gem.add_development_dependency 'rspec', '~> 2.6.0'
-  gem.add_development_dependency 'rack-test'
-  gem.add_development_dependency 'cucumber'
-  gem.add_development_dependency 'aruba'
+  gem.add_development_dependency 'rack-test', '~> 0.6'
+  gem.add_development_dependency 'cucumber', '~> 1.0'
+  gem.add_development_dependency 'aruba', '~> 0.4.3'
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
