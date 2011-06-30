@@ -12,3 +12,4 @@ Feature: Rusic
       | example/ideas/show.html.liquid        |
       | example/ideas/edit.html.liquid        |
     And the file "example/layouts/subdomain.html.liquid" should contain "{{yield}}"
+    And the file "example/ideas/index.html.liquid" should contain "rusic.ideas"
