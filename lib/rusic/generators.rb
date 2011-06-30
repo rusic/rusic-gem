@@ -11,6 +11,14 @@ module Rusic
         File.dirname(__FILE__)
       end
 
+      def create_project
+        empty_directory(name)
+      end
+
+      def copy_rusic_yml
+        template('templates/rusic.yml', "#{name}/rusic.yml")
+      end
+
       def create_layout_directory
         empty_directory("#{name}/layouts")
       end

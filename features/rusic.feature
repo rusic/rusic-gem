@@ -6,6 +6,7 @@ Feature: Rusic
   Scenario: New project
     When I run `rusic new example`
     Then the following files should exist:
+      | example/rusic.yml                     |
       | example/layouts/subdomain.html.liquid |
       | example/ideas/index.html.liquid       |
       | example/ideas/new.html.liquid         |
