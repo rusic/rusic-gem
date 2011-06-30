@@ -9,6 +9,9 @@ Gem::Specification.new do |gem|
   gem.homepage      = ''
 
   gem.add_dependency 'thor', '~> 0.14.6'
+  gem.add_dependency 'sinatra', '~> 1.1.4'
+  gem.add_dependency 'thin', '~> 1.2.11'
+  gem.add_dependency 'liquid', '~> 2.2.2'
 
   gem.add_development_dependency 'rspec', '~> 2.6.0'
   gem.add_development_dependency 'rack-test', '~> 0.6'

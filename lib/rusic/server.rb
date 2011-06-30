@@ -1,7 +1,15 @@
+require 'sinatra/base'
+require 'liquid'
+
 module Rusic
-  class Server
-    def self.call(env)
-      [200, {'Content-Type' => 'text/plain'}, ["rusic.com"]]
+  class Server < Sinatra::Base
+
+    set :views, Dir.pwd
+
+    enable :logging
+
+    get '/' do
+      liquid :"ideas/index.html", :layout => :"layouts/subdomain.html", :locals => { :rusic => { :ideas => [{ :title => "thing"}]}}
     end
   end
 end
