@@ -4,9 +4,9 @@ require File.expand_path('../lib/rusic/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Chris Mytton"]
   gem.email         = ["self@hecticjeff.net"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ''
+  gem.description   = %q{Theming tool for rusic.com}
+  gem.summary       = %q{Generate and manage themes for rusic.com, provides a local environment for rapid development}
+  gem.homepage      = 'http://developer.rusic.com'
 
   gem.add_dependency 'thor', '~> 0.14.6'
   gem.add_dependency 'sinatra', '~> 1.1.4'
