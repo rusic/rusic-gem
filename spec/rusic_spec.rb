@@ -12,8 +12,10 @@ describe Rusic::Server do
     Rusic::Server
   end
 
-  it "should respond with success on the homepage" do
-    get '/'
-    last_response.status.should be(200)
+  describe "GET /" do
+    it "should be successful" do
+      get '/'
+      last_response.status.should be(200)
+    end
   end
 end
