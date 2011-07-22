@@ -11,8 +11,16 @@ module Rusic
 
     enable :logging
 
+    helpers do
+      def bucket
+        bucket = YAML.load_file('rusic.yml')['bucket']
+        bucket['ideas'].map { |i| Idea.new(i) }
+        bucket
+      end
+    end
+
     get '/' do
-      liquid :"ideas/index.html", :layout => :"layouts/subdomain.html", :locals => { :rusic => Idea.new(YAML.load_file('rusic.yml')['bucket']) }
+      liquid :"ideas/index.html", :layout => :"layouts/subdomain.html", :locals => { :rusic => bucket }
     end
   end
 end
