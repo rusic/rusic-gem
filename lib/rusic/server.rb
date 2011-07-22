@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'liquid'
+require 'yaml'
 
 module Rusic
   class Server < Sinatra::Base
