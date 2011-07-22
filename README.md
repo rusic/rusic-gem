@@ -52,6 +52,14 @@ To set an expiry date on the bucket, use the following command:
 * Flash messages
 * Custom fields
 
+## Publishing themes
+
+Once you're happy with your theme, you'll want to publish it to your
+rusic bucket. This can also be done with the `rusic(1)` cli tool.
+
+The static assets will be shipped off to s3 for you, and the templates
+will be uploaded using the API.
+
 MIT Licenced
 
 Copyright (c) 2011, Chris Mytton / Simpleweb
