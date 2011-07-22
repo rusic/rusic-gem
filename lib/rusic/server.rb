@@ -7,6 +7,8 @@ module Rusic
 
     set :views, Dir.pwd
 
+    set :public, Dir.pwd + '/public'
+
     enable :logging
 
     get '/' do
