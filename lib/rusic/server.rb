@@ -12,7 +12,7 @@ module Rusic
     enable :logging
 
     get '/' do
-      liquid :"ideas/index.html", :layout => :"layouts/subdomain.html", :locals => { :rusic => YAML.load_file('rusic.yml')['bucket'] }
+      liquid :"ideas/index.html", :layout => :"layouts/subdomain.html", :locals => { :rusic => Idea.new(YAML.load_file('rusic.yml')['bucket']) }
     end
   end
 end
