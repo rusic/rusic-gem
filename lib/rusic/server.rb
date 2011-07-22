@@ -14,13 +14,20 @@ module Rusic
     helpers do
       def bucket
         bucket = YAML.load_file('rusic.yml')['bucket']
-        bucket['ideas'].map { |i| Idea.new(i) }
+        bucket['ideas'].map! { |i| Idea.new(i) }
         bucket
       end
     end
 
     get '/' do
       liquid :"ideas/index.html", :layout => :"layouts/subdomain.html", :locals => { :rusic => bucket }
+    end
+
+    get '/ideas/:id' do
+      liquid :"ideas/show.html", :layout => :"layouts/subdomain.html", :locals => {
+        :rusic => bucket,
+        :idea => bucket['ideas'].select { |i| i['id'] == params[:id] }
+      }
     end
   end
 end
