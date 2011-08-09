@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["self@hecticjeff.net"]
   gem.description   = %q{Theming tool for rusic.com}
   gem.summary       = %q{Generate and manage themes for rusic.com, provides a local environment for rapid development}
-  gem.homepage      = 'http://developer.rusic.com'
+  gem.homepage      = 'http://hq.rusic.com/theming'
 
   gem.add_dependency 'thor', '~> 0.14.6'
   gem.add_dependency 'sinatra', '~> 1.1.4'
