@@ -13,9 +13,9 @@ describe Rusic::Server do
   end
 
   describe "GET /" do
-    it "should be successful" do
-      get '/'
-      last_response.status.should be(200)
-    end
+    # it "should be successful" do
+    #   get '/'
+    #   last_response.status.should be(200)
+    # end
   end
 end
