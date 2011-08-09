@@ -22,9 +22,9 @@ command line tool.
     rusic new example-theme
 
     cd example-theme
-    rusic start
+    rusic server
 
-This will start up a server at http://localhost:4567/.
+This will start up a server at http://localhost:8080/.
 
 MIT Licenced
 
