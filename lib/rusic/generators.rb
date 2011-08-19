@@ -46,6 +46,14 @@ module Rusic
       def copy_ideas_edit
         template('templates/ideas/edit.html.liquid', "#{name}/ideas/edit.html.liquid")
       end
+
+      def create_public_directories
+        empty_directory("#{name}/public")
+        empty_directory("#{name}/public/images")
+        empty_directory("#{name}/public/stylesheets")
+        empty_directory("#{name}/public/javascripts")
+      end
+
     end
   end
 end
