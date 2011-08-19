@@ -24,9 +24,11 @@ module Rusic
     end
 
     get '/ideas/:id' do
+      idea = bucket['ideas'].find { |idea| idea['id'].to_s == params[:id].to_s }
+      
       liquid :"ideas/show.html", :layout => :"layouts/subdomain.html", :locals => {
         :rusic => bucket,
-        :idea => bucket['ideas'].select { |i| i['id'] == params[:id] }.first
+        :idea => idea
       }
     end
   end
