@@ -1,51 +1,70 @@
-<!doctype html>
-<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!DOCTYPE html>
+<!--
+  layouts/subdomain.html.liquid
 
-  <title></title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+  This is your main layout file. It wraps all other templates and is where you
+  should put your main HTML head and body. Other templates (for ideas or pages)
+  are rendered by the `content_for_layout` tag. See http://developer.rusic.com/
+  for more details.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Hint: use the `asset_url` to reference uploaded assets -->
+    <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}">
 
-  {{ # This will include all stylesheets in `assets/stylesheets` }}
-  {{include_stylesheets}}
+    <title>Rusic theme</title>
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
-  {{ # This will include all javascripts in `assets/javascripts` }}
-  {{include_javascripts}}
+    <!--
+      Hint: use the `stylesheet_url` or `stylesheet_tag` filters for referencing
+      stylesheets. You can use liquid within stylesheets for referencing other
+      assets (images or fonts for example).
+    -->
+    <link href="{{ 'bootstrap.css' | stylesheet_url }}" rel="stylesheet" />
+    <link href="{{ 'cover.css' | stylesheet_url }}" rel="stylesheet" />
+  </head>
 
-</head>
+  <body>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
 
-<body>
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Rusic theme</h3>
+              <ul class="nav masthead-nav">
+                <li class="active"><a href="{{ space.permalink }}">All ideas</a></li>
+                <li><a href="{{ space.permalink }}/pages/about">About</a></li>
+              </ul>
+            </div>
+          </div>
 
-  <div id="container">
-    <header>
+          <!--
+            Hint: use `content_for_layout` to render the relevant content
+            from the ideas or page template
+          -->
+          {{ content_for_layout }}
 
-    </header>
-    <div id="main" role="main">
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
 
-      {{ # This will be replace with the template content }}
-      {{yield}}
-
+        </div>
+      </div>
     </div>
-    <footer>
 
-    </footer>
-  </div> <!-- eo #container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-  <script>
-    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]]; // Change UA-XXXXX-X to be your site's ID 
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-    s.parentNode.insertBefore(g,s)}(document,"script"));
-  </script>
-
-</body>
+    <!--
+      Hint: use the `javascript_url` or `script_tag` filters for referencing
+      JavaScript files. You can use liquid within js files for referencing other
+      assets (images or fonts for example).
+    -->
+    <script src="{{ 'bootstrap.js' | javascript_url }}"></script>
+  </body>
 </html>

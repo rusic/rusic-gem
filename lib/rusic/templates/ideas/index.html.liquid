@@ -1,17 +1,29 @@
-<ol id="ideas">
-  {% for idea in rusic.ideas %}
-    <li class="idea" id="idea-{{idea.id}}">
+<!--
+  ideas/index.html.liquid
 
-      <h2>{{idea.title}}</h2>
+  This is the homepage of your space and where you list all your ideas. They
+  can be accessed using `space.ideas`.
 
-      <div class="meta">
-        <span class="date created">{{idea.created_at}}</span>
-      </div>
+  The contents of this template are rendered where `content_for_layout` is
+  called within layouts/subdomain.html.liquid. See http://developer.rusic.com/
+  for more details.
+-->
+<div class="inner cover">
+  <h1 class="cover-heading">Rusic theme</h1>
+  <p class="lead">
+    Welcome to your first Rusic theme.
+  </p>
+  <p class="lead">
+    <a href="http://docs.rusic.com/" class="btn btn-lg btn-default">Read the docs to get started</a>
+  </p>
 
-      <div class="content markdown">
-        {{markdown idea.content}}
-      </div>
-
-    </li>
-  {% endfor %}
-</ol>
+  <div class="list-group">
+    <!-- Hint: loop over the ideas in the space using liquid's `for` tag -->
+    {% for idea in space.ideas %}
+      <a href="{{ idea.link }}" class="list-group-item">
+        <h4 class="list-group-item-heading">{{ idea.title }}</h4>
+        <p class="list-group-item-text">{{ idea.content | truncate: 100 | markdown }}</p>
+      </a>
+    {% end %}
+  </div>
+</div>

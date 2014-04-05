@@ -1,3 +1,4 @@
+require 'thor'
 require 'thor/group'
 
 module Rusic
@@ -5,7 +6,7 @@ module Rusic
     class New < Thor::Group
       include Thor::Actions
 
-      argument :name, :type => :string
+      argument :name, type: :string
 
       def self.source_root
         File.dirname(__FILE__)
@@ -15,45 +16,34 @@ module Rusic
         empty_directory(name)
       end
 
-      def copy_rusic_yml
-        template('templates/rusic.yml', "#{name}/rusic.yml")
-      end
-
-      def create_layout_directory
+      def layout
         empty_directory("#{name}/layouts")
-      end
-
-      def copy_layout
         template('templates/layouts/subdomain.html.liquid', "#{name}/layouts/subdomain.html.liquid")
       end
 
-      def create_ideas_directory
+      def ideas
         empty_directory("#{name}/ideas")
-      end
-
-      def copy_ideas_index
         template('templates/ideas/index.html.liquid', "#{name}/ideas/index.html.liquid")
-      end
-
-      def copy_ideas_new
         template('templates/ideas/new.html.liquid', "#{name}/ideas/new.html.liquid")
-      end
-
-      def copy_ideas_show
         template('templates/ideas/show.html.liquid', "#{name}/ideas/show.html.liquid")
-      end
-
-      def copy_ideas_edit
         template('templates/ideas/edit.html.liquid', "#{name}/ideas/edit.html.liquid")
       end
 
-      def create_public_directories
-        empty_directory("#{name}/public")
-        empty_directory("#{name}/public/images")
-        empty_directory("#{name}/public/stylesheets")
-        empty_directory("#{name}/public/javascripts")
+      def pages
+        empty_directory("#{name}/pages")
+        template('templates/pages/about.html.liquid', "#{name}/pages/about.html.liquid")
       end
 
+      def assets
+        empty_directory("#{name}/assets")
+        template('templates/assets/bootstrap.css', "#{name}/assets/bootstrap.css")
+        template('templates/assets/bootstrap.js', "#{name}/assets/bootstrap.js")
+        template('templates/assets/cover.css', "#{name}/assets/cover.css")
+        template('templates/assets/glyphicons-halflings-regular.eot', "#{name}/assets/glyphicons-halflings-regular.eot")
+        template('templates/assets/glyphicons-halflings-regular.svg', "#{name}/assets/glyphicons-halflings-regular.svg")
+        template('templates/assets/glyphicons-halflings-regular.ttf', "#{name}/assets/glyphicons-halflings-regular.ttf")
+        template('templates/assets/glyphicons-halflings-regular.woff', "#{name}/assets/glyphicons-halflings-regular.woff")
+      end
     end
   end
 end
