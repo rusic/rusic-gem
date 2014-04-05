@@ -10,10 +10,5 @@ module Rusic
     def new(name)
       Rusic::Generators::New.start([name])
     end
-
-    desc "server", "Start up a template server"
-    def server
-      Rack::Handler::Thin.run(Rusic::Server)
-    end
   end
 end
