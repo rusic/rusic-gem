@@ -1,8 +1,4 @@
-require "thor"
-require "thin"
-require "rack/handler/thin"
-
-require "rusic"
+require 'thor'
 
 module Rusic
   class CLI < Thor
