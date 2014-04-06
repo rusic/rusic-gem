@@ -8,12 +8,12 @@ module Rusic
       end
 
       def upload_file(options = {})
-        @api_key = options.fetch(:api_key)
-        @theme = options.fetch(:theme)
+        @api_key = options.fetch('api_key')
+        @theme = options.fetch('theme')
 
         # PUT api.rusic.com/themes/123/templates/ideas/index.html.liquid
         # client.themes(theme).templates("#{dirname}/#{filename}").update!(body: body)
-        puts "PUT api.rusic.com/themes/#{theme}/templates/#{filename}"
+        puts "PUT api.rusic.com/themes/#{theme}/templates/#{file.dirname}/#{file.filename}"
 
       end
 

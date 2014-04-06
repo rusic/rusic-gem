@@ -8,12 +8,12 @@ module Rusic
       end
 
       def upload_file(options = {})
-        @api_key = options.fetch(:api_key)
-        @theme = options.fetch(:theme)
+        @api_key = options.fetch('api_key')
+        @theme = options.fetch('theme')
 
         # PUT api.rusic.com/themes/123/assets/bg.png
         # client.themes(theme).assets(filename).update!(body: body)
-        puts "PUT api.rusic.com/themes/#{theme}/assets/#{filename}"
+        puts "PUT api.rusic.com/themes/#{theme}/assets/#{file.filename}"
 
       end
 

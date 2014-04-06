@@ -4,10 +4,6 @@ require 'filewatcher'
 
 module Rusic
   class CLI < Thor
-    method_option :api_key, type: :string
-    method_option :theme, type: :string
-    method_option :watch, type: :boolean
-
     def self.source_root
       File.dirname(__FILE__)
     end
@@ -18,6 +14,9 @@ module Rusic
     end
 
     desc "deploy PATH", "Upload theme to Rusic"
+    method_option :api_key, type: :string
+    method_option :theme, type: :string
+    method_option :watch, type: :boolean
     def deploy(path = '.')
       path = Pathname.new(path)
       files = []

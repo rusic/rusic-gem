@@ -8,19 +8,19 @@ module Rusic
       end
 
       def upload_file(options = {})
-        @api_key = options.fetch(:api_key)
-        @theme = options.fetch(:theme)
+        @api_key = options.fetch('api_key')
+        @theme = options.fetch('theme')
 
         case file.extname
-        when 'css'
+        when '.css'
           # PUT api.rusic.com/themes/123/stylesheets/style.css
           # client.themes(theme).stylesheets(filename).update!(body: body)
-          puts "PUT api.rusic.com/themes/#{theme}/stylesheets/#{filename}"
+          puts "PUT api.rusic.com/themes/#{theme}/stylesheets/#{file.filename}"
 
-        when 'js'
+        when '.js'
           # PUT api.rusic.com/themes/123/javascripts/style.css
           # client.themes(theme).javascripts(filename).update!(body: body)
-          puts "PUT api.rusic.com/themes/#{theme}/javascripts/#{filename}"
+          puts "PUT api.rusic.com/themes/#{theme}/javascripts/#{file.filename}"
 
         end
       end
