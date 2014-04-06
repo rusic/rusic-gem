@@ -9,17 +9,19 @@ module Rusic
     end
 
     def uploader
-      case dirname
+      case dirname.to_s
       when 'layouts', 'ideas', 'pages'
-        Uploaders::Template.new(self)
+        uploader = Uploaders::Template.new(self)
       when 'assets'
         case extname
-        when 'css', 'js'
-          Uploaders::EditableAsset.new(self)
+        when '.css', '.js'
+          uploader = Uploaders::EditableAsset.new(self)
         else
-          Uploaders::Asset.new(self)
+          uploader = Uploaders::Asset.new(self)
         end
       end
+
+      uploader
     end
 
     def dirname
@@ -27,7 +29,7 @@ module Rusic
     end
 
     def filename
-      pathname.filename
+      pathname.basename
     end
 
     def extname
