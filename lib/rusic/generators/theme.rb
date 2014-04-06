@@ -3,7 +3,7 @@ require 'thor/group'
 
 module Rusic
   module Generators
-    class New < Thor::Group
+    class Theme < Thor::Group
       include Thor::Actions
 
       argument :name, type: :string
