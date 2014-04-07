@@ -4,21 +4,17 @@ require 'filewatcher'
 
 module Rusic
   class CLI < Thor
-    def self.source_root
-      File.dirname(__FILE__)
-    end
-
     desc "new NAME", "Create a new Rusic theme"
     def new(name)
       Rusic::Generators::Theme.start([name])
     end
 
-    desc "deploy PATH", "Upload theme to Rusic"
+    desc "deploy", "Upload theme to Rusic"
     method_option :api_key, type: :string
     method_option :theme, type: :string
     method_option :watch, type: :boolean
-    def deploy(path = '.')
-      path = Pathname.new(path)
+    def deploy
+      path = Pathname.new('.')
       files = []
 
       files << Dir.glob(path.join('{layouts,ideas,pages}', '*.liquid'))

@@ -11,20 +11,28 @@ module Rusic
         @api_key = options.fetch('api_key')
         @theme = options.fetch('theme')
 
-        # PUT api.rusic.com/themes/123/templates/ideas/index.html.liquid
-        # client.themes(theme).templates("#{dirname}/#{filename}").update!(body: body)
-        puts "PUT api.rusic.com/themes/#{theme}/templates/#{file.dirname}/#{file.filename}"
+        client["themes/#{theme}/templates/#{file.dirname}/#{file.filename}"].put(params)
 
+        puts "Saved #{file.dirname}/#{file.filename}"
       end
 
       private
+
+      def params
+        { template: { body: body} }
+      end
 
       def body
         File.read(file.pathname.to_s)
       end
 
       def client
-        Rusic::API::Client.new(api_key: api_key)
+        headers = {
+          'X-API-Key' => api_key,
+          'Accept' => 'application/vnd.rusic.v1+json'
+        }
+
+        @client ||= RestClient::Resource.new('http://api.rusic.dev', headers: headers)
       end
     end
   end

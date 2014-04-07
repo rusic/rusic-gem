@@ -1,5 +1,7 @@
 require 'rusic/version'
 
+require 'rest_client'
+
 module Rusic
   require 'rusic/cli'
   require 'rusic/deployer'
