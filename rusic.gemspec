@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'thor', '~> 0.14.6'
   spec.add_runtime_dependency 'rest-client', '~> 1.6'
+  spec.add_runtime_dependency 'filewatcher', '~> 0.3'
 
   spec.add_development_dependency 'rake', '~> 0.9.0'
   spec.add_development_dependency 'rspec', '~> 2.6.0'
