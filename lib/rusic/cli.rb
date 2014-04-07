@@ -11,6 +11,7 @@ module Rusic
 
     desc "deploy", "Upload theme to Rusic"
     method_option :api_key, type: :string
+    method_option :api_host, type: :string, default: 'api.rusic.com'
     method_option :theme, type: :string
     method_option :watch, type: :boolean
     def deploy

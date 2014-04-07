@@ -1,7 +1,7 @@
 module Rusic
   module Uploaders
     class EditableAsset
-      attr_accessor :file, :api_key, :theme
+      attr_accessor :file, :api_key, :theme, :api_host
 
       def initialize(file)
         @file = file
@@ -9,6 +9,7 @@ module Rusic
 
       def upload_file(options = {})
         @api_key = options.fetch('api_key')
+        @api_host = options.fetch('api_host')
         @theme = options.fetch('theme')
 
         case file.extname
@@ -39,7 +40,7 @@ module Rusic
           'Accept' => 'application/vnd.rusic.v1+json'
         }
 
-        @client ||= RestClient::Resource.new('http://api.rusic.dev', headers: headers)
+        @client ||= RestClient::Resource.new("http://#{api_host}", headers: headers)
       end
     end
   end
