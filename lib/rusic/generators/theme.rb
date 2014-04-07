@@ -9,7 +9,7 @@ module Rusic
       argument :name, type: :string
 
       def self.source_root
-        File.dirname(__FILE__)
+        File.dirname(__FILE__) + '/..'
       end
 
       def create_project
