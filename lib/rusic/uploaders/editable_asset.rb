@@ -13,7 +13,7 @@ module Rusic
 
         case file.extname
         when '.css'
-          client["themes/#{theme}stylesheets/#{file.filename}"].put(params)
+          client["themes/#{theme}/stylesheets/#{file.filename}"].put(params)
 
         when '.js'
           client["themes/#{theme}/javascripts/#{file.filename}"].put(params)
