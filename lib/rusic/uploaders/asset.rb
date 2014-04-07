@@ -19,10 +19,10 @@ module Rusic
       private
 
       def params
-        { asset: { image: file } }
+        { asset: { image: image } }
       end
 
-      def file
+      def image
         File.open(file.pathname.to_s, 'rb')
       end
 
