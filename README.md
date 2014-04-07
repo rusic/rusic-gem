@@ -1,31 +1,117 @@
-rusic
-=====
+# Rusic
 
-This gem makes it easy to develop themes for rusic.com. It can generate
-themes, as well as serve them from a local server.
+Generate and deploy Rusic themes with ease.
+
+This allows you to:
+
+* Create a set of theme templates and assets
+* Deploy those templates and assets to Rusic seamlessly
+
+This mean you can develop themes on your local machine (using your editor of
+choice) and see the changes live on Rusic immediately.
+
+## Dependencies
+
+* Ruby 1.9+
+* Rubygems
 
 ## Install
 
-You'll need ruby, if you're on OS X you'll already have it. Then you'll
-need to install the gem.
-
-    gem install rusic
-
-If this gives you a permission error you might need to use `sudo`.
+    $ gem install rusic
 
 ## Usage
 
-With the gem installed you can now generate a theme using the rusic
-command line tool.
+```
+$ rusic
+Tasks:
+  rusic help [TASK]  # Describe available tasks or one specific task
+  rusic new NAME     # Create a new Rusic theme
+  rusic deploy       # Upload theme to Rusic
+```
 
-    cd ~/Desktop # Or somewhere else maybe
-    rusic new example-theme
+### Generate new theme
 
-    cd example-theme
-    rusic server
+```shell
+$ rusic help new
+Usage:
+  rusic new NAME
 
-This will start up a server at http://localhost:8080/.
+Create a new Rusic theme
+```
+
+For example, to create a new theme called "competition-theme"
+
+```shell
+$ rusic new competition-theme
+create  competition-theme
+create  competition-theme/README.md
+create  competition-theme/layouts
+create  competition-theme/layouts/subdomain.html.liquid
+create  competition-theme/ideas
+create  competition-theme/ideas/index.html.liquid
+create  competition-theme/ideas/new.html.liquid
+create  competition-theme/ideas/show.html.liquid
+create  competition-theme/ideas/edit.html.liquid
+create  competition-theme/pages
+create  competition-theme/pages/about.html.liquid
+create  competition-theme/assets
+create  competition-theme/assets/bootstrap.css
+create  competition-theme/assets/bootstrap.js
+create  competition-theme/assets/cover.css
+create  competition-theme/assets/glyphicons-halflings-regular.eot
+create  competition-theme/assets/glyphicons-halflings-regular.svg
+create  competition-theme/assets/glyphicons-halflings-regular.ttf
+create  competition-theme/assets/glyphicons-halflings-regular.woff
+```
+
+This will create a simple, bootstrapped theme
+
+### Deploy theme
+
+```shell
+$ rusic help deploy
+Usage:
+  rusic deploy
+
+Options:
+  [--api-key=API_KEY]
+  [--api-host=API_HOST] # Default: api.rusic.com
+  [--theme=THEME]
+  [--watch]
+
+Upload theme to Rusic
+```
+
+To deploy the "competition-theme" above, we would do
+
+```shell
+$ cd competition-theme/
+$ rusic deploy --api-key YOUR_API_KEY --theme YOUR_THEME_ID
+Saved layouts/subdomain.html.liquid
+Saved ideas/edit.html.liquid
+Saved ideas/index.html.liquid
+Saved ideas/new.html.liquid
+Saved ideas/show.html.liquid
+Saved pages/about.html.liquid
+Saved assets/bootstrap.css
+Saved assets/bootstrap.js
+Saved assets/cover.css
+Saved assets/glyphicons-halflings-regular.eot
+Saved assets/glyphicons-halflings-regular.svg
+Saved assets/glyphicons-halflings-regular.ttf
+Saved assets/glyphicons-halflings-regular.woff
+```
+
+### Deploy on file changes
+
+Use the `--watch` flag to watch for changes on files and deploy them automatically
+
+```
+$ rusic deploy --api-key YOUR_API_KEY --theme YOUR_THEME_ID --watch
+$ touch layouts/subdomain.html.liquid # in another process
+Saved layouts/subdomain.html.liquid
+```
 
 MIT Licenced
 
-Copyright (c) 2011, Chris Mytton / Simpleweb
+Copyright &copy; 2011&ndash;2014, Simpleweb Ltd.
