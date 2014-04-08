@@ -10,6 +10,12 @@ module Rusic
       files.each do |file|
         file.uploader.upload_file(options)
       end
+    rescue RestClient::Unauthorized
+      puts '401 Unauthorized. Ensure your API Key is set correctly.'
+      exit(1)
+    rescue RestClient::ResourceNotFound
+      puts '404 Not Found. Ensure you are have permission to access the given theme'
+      exit(1)
     end
   end
 end
