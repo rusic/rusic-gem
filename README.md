@@ -27,6 +27,7 @@ Tasks:
   rusic help [TASK]  # Describe available tasks or one specific task
   rusic new NAME     # Create a new Rusic theme
   rusic deploy       # Upload theme to Rusic
+  rusic version      # Display version of Rusic gem
 ```
 
 ### Generate new theme

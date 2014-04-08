@@ -24,6 +24,10 @@ module Rusic
       uploader
     end
 
+    def descriptor
+      "#{dirname}/#{filename}"
+    end
+
     def dirname
       pathname.dirname
     end
