@@ -1,0 +1,52 @@
+<!--
+  ideas/new.html.liquid
+
+  This template is used to allow participants to create new ideas. Note the form
+  action and enctype, as well as how the idea inputs are named.
+
+  The contents of this template are rendered where `content_for_layout` is
+  called within layouts/subdomain.html.liquid. See http://developer.rusic.com/
+  for more details.
+-->
+<div class="inner cover">
+  <h1 class="cover-heading">Create a new idea</h1>
+
+  {% if idea.errors.size > 0 %}
+    <div class="alert alert-success">
+      <p>The following errors occured:</p>
+
+      <ul>
+        {% for error in idea.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form action="{{space.permalink}}/ideas" method="post" enctype="multipart/form-data" role="form">
+    <div class="form-group">
+      <label for="idea_title">Title</label>
+      <input type="text" id="idea_title" name="idea[title]" value="{{ idea.title }}" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="idea_content">Content</label>
+      <textarea id="idea_content" name="idea[content]" class="form-control">{{ idea.content }}</textarea>
+    </div>
+
+    <!--
+      Hint: you can allow participants to upload multiple images. Use a zero
+      based index for referencing each image input, eg.
+
+      idea[images_attributes][0][file]
+      idea[images_attributes][1][file]
+      idea[images_attributes][2][file]
+    -->
+    <div class="form-group">
+      <label for="idea_images_attributes_0_file">Image</label>
+      <input type="file" id="idea_images_attributes_0_file" name="idea[images_attributes][0][file]" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-default">Create idea</button>
+  </form>
+</div>

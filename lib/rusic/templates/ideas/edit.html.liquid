@@ -1,0 +1,42 @@
+<!--
+  ideas/edit.html.liquid
+
+  This template is used to allow participants to edit their existing ideas.
+  Participants can only access the ideas they have created with their social
+  account.
+
+  The contents of this template are rendered where `content_for_layout` is
+  called within layouts/subdomain.html.liquid. See http://developer.rusic.com/
+  for more details.
+-->
+<div class="inner cover">
+  <h1 class="cover-heading">Update {{ idea.title }}</h1>
+
+  {% if idea.errors.size > 0 %}
+    <div class="alert alert-success">
+      <p>The following errors occured:</p>
+
+      <ul>
+        {% for error in idea.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form action="{{ idea.permalink }}" method="post" role="form">
+    <input type="hidden" name="_method" value="put" />
+
+    <div class="form-group">
+      <label for="idea_title">Title</label>
+      <input type="text" id="idea_title" name="idea[title]" value="{{ idea.title }}" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="idea_content">Content</label>
+      <textarea id="idea_content" name="idea[content]" class="form-control">{{ idea.content }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-lg btn-default">Update idea</button>
+  </form>
+</div>

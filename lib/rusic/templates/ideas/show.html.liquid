@@ -1,0 +1,27 @@
+<!--
+  ideas/show.html.liquid
+
+  This is template that shows an individual idea. You can link to this using the
+  URL from calling `idea.link`.
+
+  The contents of this template are rendered where `content_for_layout` is
+  called within layouts/subdomain.html.liquid. See http://developer.rusic.com/
+  for more details.
+-->
+<div class="inner cover">
+  <h1 class="cover-heading">{{ idea.title }}</h1>
+  <div class="lead">
+    <!-- Hint: use the `markdown` filter to format plain text into safe HTML -->
+    {{ idea.content | markdown }}
+  </div>
+  <div class="images">
+    {% for image in idea.images %}
+      <span class="thumbnail">
+        <img src="{{ image.medium_square }}" alt="Image for {{ idea.title }}" />
+      </span>
+    {% end %}
+  </div>
+  <p class="lead">
+    <a href="{{ space.permalink }}" class="btn btn-lg btn-default">Back to all ideas</a>
+  </p>
+</div>

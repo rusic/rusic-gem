@@ -1,8 +1,13 @@
-require "rusic/version"
+require 'rusic/version'
+
+require 'rest_client'
 
 module Rusic
-  autoload :Server, 'rusic/server'
-  autoload :CLI, 'rusic/cli'
-  autoload :Generators, 'rusic/generators'
-  autoload :Idea, 'rusic/idea'
+  require 'rusic/cli'
+  require 'rusic/deployer'
+  require 'rusic/theme_file'
+  require 'rusic/generators/theme'
+  require 'rusic/uploaders/asset'
+  require 'rusic/uploaders/editable_asset'
+  require 'rusic/uploaders/template'
 end
