@@ -35,5 +35,10 @@ module Rusic
         deployer.upload_files(options)
       end
     end
+
+    desc "version", "Display version of Rusic gem"
+    def version
+      puts Rusic::VERSION
+    end
   end
 end
