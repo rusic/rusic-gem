@@ -24,9 +24,11 @@ module Rusic
       files.flatten!
 
       if options[:watch]
-        FileWatcher.new(files).watch(0.5) do |file|
-          deployer = Rusic::Deployer.new(file)
-          deployer.upload_files(options)
+        FileWatcher.new(%w[layouts/ ideas/ pages/ assets/]).watch(0.5) do |file, event|
+          unless event == :delete
+            deployer = Rusic::Deployer.new(file)
+            deployer.upload_files(options)
+          end
         end
       else
         deployer = Rusic::Deployer.new(files)
