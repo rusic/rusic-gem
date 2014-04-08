@@ -8,7 +8,6 @@ module Rusic
         when '.js'
           client["themes/#{theme}/javascripts/#{file.filename}"].put(params)
         end
-        end
       end
 
       private
