@@ -1,6 +1,7 @@
 require 'rusic/version'
 
 require 'rest_client'
+require 'command_line_reporter'
 
 module Rusic
   require 'rusic/cli'
