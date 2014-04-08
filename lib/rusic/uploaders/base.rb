@@ -1,6 +1,8 @@
 module Rusic
   module Uploaders
     class Base
+      include CommandLineReporter
+
       attr_accessor :file, :api_key, :theme, :api_host
 
       def initialize(file)
@@ -12,8 +14,13 @@ module Rusic
         @api_host = options.fetch('api_host')
         @theme = options.fetch('theme')
 
-        report(message: "Uploading #{file.descriptor}", complete: "Completed upload of #{file.descriptor}") do
-          perform
+        report(message: "Uploading #{file.descriptor}", complete: '', type: 'inline', indent_size: 2) do
+          begin
+            perform
+            print(' [done]'.green)
+          rescue RestClient::UnprocessableEntity
+            print(' [failed]'.red)
+          end
         end
       end
 
