@@ -8,10 +8,10 @@ module Rusic
       private
 
       def params
-        { asset: { file: file } }
+        { asset: { file: asset } }
       end
 
-      def file
+      def asset
         File.open(file.pathname.to_s, 'rb')
       end
     end
