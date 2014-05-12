@@ -1,6 +1,8 @@
 require 'thor'
 require 'pathname'
 require 'filewatcher'
+require 'json'
+require 'awesome_print'
 
 module Rusic
   class CLI < Thor
@@ -33,6 +35,20 @@ module Rusic
       else
         deployer = Rusic::Deployer.new(files)
         deployer.upload_files(options)
+      end
+    end
+
+
+    desc "settings", "Display settings from a .rusic file"
+
+    def settings
+      filename = '.rusic'
+
+      if File.file?(filename)
+        file = IO.read filename
+        ap JSON.parse file
+      else
+        puts "The current directory does not contain an #{filename} file"
       end
     end
 
