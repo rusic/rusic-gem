@@ -16,7 +16,8 @@ module Rusic
     method_option :api_host, type: :string, default: 'api.rusic.com'
     method_option :theme, type: :string
     method_option :watch, type: :boolean
-    def deploy
+
+    def deploy(environment_id = nil)
       path = Pathname.new('.')
       files = []
 
