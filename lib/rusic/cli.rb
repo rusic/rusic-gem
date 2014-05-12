@@ -62,13 +62,13 @@ module Rusic
     desc "settings", "Display settings from a .rusic file"
 
     def settings
-      filename = '.rusic'
+      configuration_filename = '.rusic'
 
-      if File.file?(filename)
-        file = IO.read filename
+      if File.file?(configuration_filename)
+        file = IO.read configuration_filename
         ap JSON.parse file
       else
-        puts "The current directory does not contain an #{filename} file"
+        puts "The current directory does not contain an #{configuration_filename} file"
       end
     end
 
