@@ -18,6 +18,25 @@ module Rusic
     method_option :watch, type: :boolean
 
     def deploy(environment_id = nil)
+      configuration_filename = '.rusic'
+
+      if environment_id
+        if File.file?(configuration_filename)
+          file = IO.read configuration_filename
+          environment = JSON.parse(file)[environment_id]
+
+          if environment
+            environment_options = options.dup.merge!(environment)
+          else
+            puts "The environment #{environment} is not set in the #{configuration_filename} file"
+          end
+        else
+          puts "The current directory does not contain an #{configuration_filename} file"
+        end
+      end
+
+      options = environment_options || options
+
       path = Pathname.new('.')
       files = []
 
