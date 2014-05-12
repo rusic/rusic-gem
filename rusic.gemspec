@@ -6,8 +6,8 @@ require 'rusic/version'
 Gem::Specification.new do |spec|
   spec.name          = "rusic"
   spec.version       = Rusic::VERSION
-  spec.authors       = ['Chris Mytton', 'Paul Springett']
-  spec.email         = ['self@hecticjeff.net', 'paul@simpleweb.co.uk']
+  spec.authors       = ['Chris Mytton', 'Paul Springett', 'Adam Butler']
+  spec.email         = ['self@hecticjeff.net', 'paul@simpleweb.co.uk', 'adam@lab.io']
   spec.description   = 'Theme creation and deployment'
   spec.summary       = 'Generate and deploy themes to Rusic'
   spec.homepage      = 'http://developer.rusic.com/'
