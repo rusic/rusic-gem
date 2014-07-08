@@ -16,6 +16,10 @@ module Rusic
         empty_directory(name)
       end
 
+      def git
+        copy_file('templates/gitignore', "#{name}/.gitignore")
+      end
+
       def readme
         template('templates/README.md', "#{name}/README.md", name: name)
       end
