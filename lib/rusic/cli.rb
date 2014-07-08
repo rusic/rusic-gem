@@ -12,7 +12,7 @@ module Rusic
 
     desc "deploy [ENV]", "Upload theme to Rusic"
     method_option :api_key, type: :string
-    method_option :api_host, type: :string
+    method_option :api_host, type: :string, default: 'api.rusic.com'
     method_option :theme, type: :string
     method_option :watch, type: :boolean
 
@@ -45,19 +45,14 @@ module Rusic
     private
 
     def deploy_options_for(env)
-      environment_options = options.fetch(env, {})
-      Thor::CoreExt::HashWithIndifferentAccess.new(options.merge(environment_options))
+      environment_options = options_from_file
+      environment_options.merge!(options_from_file.fetch(env, {}))
+      Thor::CoreExt::HashWithIndifferentAccess.new(environment_options.merge(options))
     end
 
-    def options
-      original_options = super
-      environment = original_options.fetch('environment', nil)
+    def options_from_file
       config_file = Dir.glob(File.join(Dir.pwd, '.rusic{,.yml,.yaml}')).first
-      return original_options unless config_file
-
-      defaults = ::YAML::load_file(config_file) || {}
-      defaults = defaults.fetch(environment, {}) if environment
-      Thor::CoreExt::HashWithIndifferentAccess.new(defaults.merge(original_options))
+      ::YAML::load_file(config_file) || {}
     end
   end
 end
