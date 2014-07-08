@@ -24,11 +24,11 @@ choice) and see the changes live on Rusic immediately.
 ```
 $ rusic
 Tasks:
-  rusic help [TASK]          # Describe available tasks or one specific task
-  rusic new NAME             # Create a new Rusic theme
-  rusic deploy [ENVIRONMENT] # Upload theme to Rusic
-  rusic settings             # Display settings from a .rusic file
-  rusic version              # Display version of Rusic gem
+  rusic help [TASK]   # Describe available tasks or one specific task
+  rusic new NAME      # Create a new Rusic theme
+  rusic deploy [ENV]  # Upload theme to Rusic
+  rusic settings      # Display settings from a .rusic file
+  rusic version       # Display version of Rusic gem
 ```
 
 ### Generate new theme
@@ -73,13 +73,13 @@ This will create a simple, bootstrapped theme
 ```shell
 $ rusic help deploy
 Usage:
-  rusic deploy
+  rusic deploy [ENV]
 
 Options:
-  [--api-key=API_KEY]
-  [--api-host=API_HOST] # Default: api.rusic.com
-  [--theme=THEME]
-  [--watch]
+      [--api-key=API_KEY]
+      [--api-host=API_HOST] # Default: api.rusic.com
+      [--theme=THEME]
+      [--watch]
 
 Upload theme to Rusic
 ```
@@ -116,29 +116,18 @@ Saved layouts/subdomain.html.liquid
 
 ### Deploy using a `.rusic` file
 
-You can add a `.rusic` file to your project directory and set your environments
-settings within this file. This file should be valid `JSON` and looks like this -
+You can add a `rusic.yml` file to your project directory and set your environments
+settings within this file. This file should be valid
+[YAML](http://www.yaml.org/start.html) and looks like this -
 
-```json
-{
-  "production": {
-    "api_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "theme": 1
-  },
-  "stage": {
-    "api_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "theme": 2
-  },
-  "local": {
-    "api_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "theme": 3
-  },
-  "local": {
-    "api_host": "api.rusic.dev",
-    "api_key": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
-    "theme": 1
-  }
-}
+```yaml
+#
+api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+stage:
+  theme: 2
+production:
+  api_key: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+  theme: 1
 ```
 
 To deploy to production you need to run
