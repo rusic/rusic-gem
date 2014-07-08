@@ -76,10 +76,10 @@ Usage:
   rusic deploy [ENV]
 
 Options:
-      [--api-key=API_KEY]
-      [--api-host=API_HOST] # Default: api.rusic.com
-      [--theme=THEME]
-      [--watch]
+  [--api-key=API_KEY]
+  [--api-host=API_HOST] # Default: api.rusic.com
+  [--theme=THEME]
+  [--watch]
 
 Upload theme to Rusic
 ```
