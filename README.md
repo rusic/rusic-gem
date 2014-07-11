@@ -24,10 +24,11 @@ choice) and see the changes live on Rusic immediately.
 ```
 $ rusic
 Tasks:
-  rusic help [TASK]  # Describe available tasks or one specific task
-  rusic new NAME     # Create a new Rusic theme
-  rusic deploy       # Upload theme to Rusic
-  rusic version      # Display version of Rusic gem
+  rusic help [TASK]   # Describe available tasks or one specific task
+  rusic new NAME      # Create a new Rusic theme
+  rusic deploy [ENV]  # Upload theme to Rusic
+  rusic settings      # Display settings from a .rusic file
+  rusic version       # Display version of Rusic gem
 ```
 
 ### Generate new theme
@@ -72,7 +73,7 @@ This will create a simple, bootstrapped theme
 ```shell
 $ rusic help deploy
 Usage:
-  rusic deploy
+  rusic deploy [ENV]
 
 Options:
   [--api-key=API_KEY]
@@ -111,6 +112,35 @@ Use the `--watch` flag to watch for changes on files and deploy them automatical
 $ rusic deploy --api-key YOUR_API_KEY --theme YOUR_THEME_ID --watch
 $ touch layouts/subdomain.html.liquid # in another process
 Saved layouts/subdomain.html.liquid
+```
+
+### Deploy using a `.rusic` file
+
+You can add a `rusic.yml` file to your project directory and set your environments
+settings within this file. This file should be valid
+[YAML](http://www.yaml.org/start.html) and looks like this -
+
+```yaml
+#
+api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+stage:
+  theme: 2
+production:
+  api_key: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+  theme: 1
+```
+
+To deploy to production you need to run
+
+```shell
+$ rusic deploy production
+```
+
+This also works with `--watch`
+
+
+```shell
+$ rusic deploy production --watch
 ```
 
 MIT Licenced
