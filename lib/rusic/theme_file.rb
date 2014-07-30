@@ -9,7 +9,7 @@ module Rusic
     end
 
     def uploader
-      case dirname.to_s
+      case "#{dirname.basename}"
       when 'layouts', 'ideas', 'pages'
         uploader = Uploaders::Template.new(self)
       when 'assets'
