@@ -2,7 +2,7 @@ module Rusic
   module Uploaders
     class Template < Base
       def perform
-        client["themes/#{theme}/templates/#{file.dirname}/#{file.filename}"].put(params)
+        client["themes/#{theme}/templates/#{file.dirname.basename}/#{file.filename}"].put(params)
       end
 
       private
