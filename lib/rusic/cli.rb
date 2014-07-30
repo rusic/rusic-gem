@@ -52,6 +52,7 @@ module Rusic
 
     def options_from_file
       config_file = Dir.glob(File.join(Dir.pwd, '.rusic{,.yml,.yaml}')).first
+      return {} unless config_file
       ::YAML::load_file(config_file) || {}
     end
   end
