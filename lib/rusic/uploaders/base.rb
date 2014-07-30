@@ -22,6 +22,10 @@ module Rusic
             print(' [failed]'.red)
           end
         end
+      rescue KeyError => e
+        puts
+        puts e.message
+        exit(1)
       end
 
       def perform
