@@ -18,7 +18,7 @@ module Rusic
           begin
             perform
             print(' [done]'.green)
-          rescue RestClient::UnprocessableEntity
+          rescue RestClient::UnprocessableEntity, RestClient::Exception
             print(' [failed]'.red)
           end
         end

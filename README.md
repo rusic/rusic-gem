@@ -116,7 +116,7 @@ Saved layouts/subdomain.html.liquid
 
 ### Deploy using a `.rusic` file
 
-You can add a `rusic.yml` file to your project directory and set your environments
+You can add a `.rusic.yml` file to your project directory and set your environments
 settings within this file. This file should be valid
 [YAML](http://www.yaml.org/start.html) and looks like this -
 
@@ -142,6 +142,21 @@ This also works with `--watch`
 ```shell
 $ rusic deploy production --watch
 ```
+
+### Custom Attributes
+
+You can create and maintain your themes custom attributes by creating the
+`attributes.yml` file in the root of your theme. Then declare your attributes like so:
+
+```yaml
+my_custom_attribute_key:
+  value: "Custom attributes rule!!"
+  help_text: "Declare how much you admire custom attributes"
+```
+
+If the key does not exist it will be created, if the key already exists the
+`value` and `help_text` will be updated. If you need to delete a custom attribute
+you should do that from the theme settings page on Rusic.
 
 MIT Licenced
 

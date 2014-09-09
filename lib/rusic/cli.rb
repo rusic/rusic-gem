@@ -22,6 +22,7 @@ module Rusic
 
       files << Dir.glob(path.join('{layouts,ideas,pages}', '*.liquid'))
       files << Dir.glob(path.join('assets', '*.*'))
+      files << Dir.glob(path.join('attributes.yml'))
 
       files.flatten!
       if options['watch']
