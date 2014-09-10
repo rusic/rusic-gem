@@ -5,26 +5,11 @@ module Rusic
         client["themes/#{theme}"].put(params)
       end
 
-      def upload_file(options = {})
-        @api_key = options.fetch('api_key')
-        @api_host = options.fetch('api_host')
-        @theme = options.fetch('theme')
-
-        report(message: "Syncing custom attributes", complete: '', type: 'inline', indent_size: 2) do
-          begin
-            perform
-            print(' [done]'.green)
-          rescue RestClient::UnprocessableEntity
-            print(' [failed]'.red)
-          end
-        end
-      rescue KeyError => e
-        puts
-        puts e.message
-        exit(1)
-      end
-
       private
+
+      def message
+        "Updating custom attributes"
+      end
 
       def params
         params_hash = {

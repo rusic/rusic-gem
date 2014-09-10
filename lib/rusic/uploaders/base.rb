@@ -14,7 +14,7 @@ module Rusic
         @api_host = options.fetch('api_host')
         @theme = options.fetch('theme')
 
-        report(message: "Uploading #{file.descriptor}", complete: '', type: 'inline', indent_size: 2) do
+        report(message: message, complete: '', type: 'inline', indent_size: 2) do
           begin
             perform
             print(' [done]'.green)
@@ -33,6 +33,10 @@ module Rusic
       end
 
       protected
+
+      def message
+        "Uploading #{file.descriptor}"
+      end
 
       def client
         headers = {
