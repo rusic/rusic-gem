@@ -53,7 +53,7 @@ module Rusic
       end
 
       def attributes_from_file
-        ::YAML::load_file(file.file)
+        ::YAML::load_file(file.file) || {}
       end
     end
   end
