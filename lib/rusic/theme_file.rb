@@ -21,7 +21,7 @@ module Rusic
         end
       else
         case filename.to_s
-        when 'attributes.yml'
+        when /attributes\.ya?ml/
           uploader = Uploaders::CustomAttributes.new(self)
         end
       end
