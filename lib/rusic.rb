@@ -2,6 +2,7 @@ require 'rusic/version'
 
 require 'rest_client'
 require 'command_line_reporter'
+require 'json'
 
 module Rusic
   require 'rusic/cli'
@@ -12,4 +13,5 @@ module Rusic
   require 'rusic/uploaders/asset'
   require 'rusic/uploaders/editable_asset'
   require 'rusic/uploaders/template'
+  require 'rusic/uploaders/custom_attributes'
 end

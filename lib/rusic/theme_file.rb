@@ -19,6 +19,11 @@ module Rusic
         else
           uploader = Uploaders::Asset.new(self)
         end
+      else
+        case filename.to_s
+        when /attributes\.ya?ml/
+          uploader = Uploaders::CustomAttributes.new(self)
+        end
       end
 
       uploader
