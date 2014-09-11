@@ -1,0 +1,77 @@
+image: &image
+  pico: http://placehold.it/16x16
+  icon: http://placehold.it/32x32
+  thumb: http://placehold.it/100x100
+  square: http://placehold.it/120x120
+  compact: http://placehold.it/160x160
+  medium: http://placehold.it/300x300
+  medium_square: http://placehold.it/300x300
+  medium_large: http://placehold.it/480x480
+  grande: http://placehold.it/600x600
+  large: http://placehold.it/800x800
+  massive: http://placehold.it/1024x1024
+
+user: &user
+  provider: twitter
+  nickname: rusichq
+  image_url: https://pbs.twimg.com/profile_images/2220871071/rusic-twitter.png
+  profile_url: https://twitter.com/rusichq
+
+comment: &comment
+  body: |
+    Do you see any Teletubbies in here? Do you see a slender plastic tag
+    clipped to my shirt with my name printed on it? Do you see a little Asian
+    child with a blank expression on his face sitting outside on a mechanical
+    helicopter that shakes when you put quarters in it? No? Well, that's what
+    you see at a toy store. And you must think you're in a toy store, because
+    you're here shopping for an infant named Jeb.
+  user: *user
+  created_at: "2014-02-11 11:02:57"
+
+idea: &idea
+  id: 1
+  title: My First Rusic Idea
+  content: |
+    Well, the way they make shows is, they make one show. That show's
+    called a pilot. Then they show that show to the people who make shows,
+    and on the strength of that one show they decide if they're going to make
+    more shows. Some pilots get picked and become television programs. Some
+    don't, become nothing. She starred in one of the ones that became nothing.
+  images:
+    - *image
+  likes: 3
+  link: /ideas/1
+  permalink: http://localhost:4567/ideas/1
+  like_link: http://localhost:4567/ideas/1/like
+  user: *user
+  comments:
+    - *comment
+    - *comment
+  comments_count: 2
+  interested_users:
+    - *user
+    - *user
+    - *user
+  latitude: 51.447737
+  longitude: -2.609559
+  errors:
+    - This is an error
+
+space:
+  title: ACME Inc.
+  slug: acme-inc
+  summary: |
+    When I get back, remind to tell you about the time I took 100 nuns to
+    nairobi! You're only supposed to blow the bloody doors off!
+  interactive: true
+  permalink: http://localhost:4567
+  user: *user
+  ideas:
+    - *idea
+    - *idea
+    - *idea
+    - *idea
+    - *idea
+
+env: development
+current_user: *user

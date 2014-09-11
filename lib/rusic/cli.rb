@@ -5,6 +5,11 @@ require 'yaml'
 
 module Rusic
   class CLI < Thor
+    desc "server", "Development server for theme"
+    def server
+      Rusic::Server.start
+    end
+
     desc "new NAME", "Create a new Rusic theme"
     def new(name)
       Rusic::Generators::Theme.start([name])

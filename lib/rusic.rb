@@ -14,4 +14,5 @@ module Rusic
   require 'rusic/uploaders/editable_asset'
   require 'rusic/uploaders/template'
   require 'rusic/uploaders/custom_attributes'
+  require 'rusic/server'
 end
