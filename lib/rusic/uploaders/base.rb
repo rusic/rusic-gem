@@ -11,7 +11,7 @@ module Rusic
 
       def upload_file(options = {})
         @api_key = options.fetch('api_key')
-        @api_host = options.fetch('api_host')
+        @api_host = options.has_key?('api_host') ? options.fetch('api_host') : 'api.rusic.com'
         @theme = options.fetch('theme')
 
         report(message: message, complete: '', type: 'inline', indent_size: 2) do

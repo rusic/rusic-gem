@@ -12,7 +12,7 @@ module Rusic
 
     desc "deploy [ENV]", "Upload theme to Rusic"
     method_option :api_key, type: :string
-    method_option :api_host, type: :string, default: 'api.rusic.com'
+    method_option :api_host, type: :string
     method_option :theme, type: :string
     method_option :watch, type: :boolean
 
@@ -48,7 +48,7 @@ module Rusic
     def deploy_options_for(env)
       environment_options = options_from_file
       environment_options.merge!(options_from_file.fetch(env, {}))
-      Thor::CoreExt::HashWithIndifferentAccess.new(environment_options)
+      Thor::CoreExt::HashWithIndifferentAccess.new(environment_options.merge(options))
     end
 
     def options_from_file
