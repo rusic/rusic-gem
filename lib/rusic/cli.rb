@@ -48,7 +48,7 @@ module Rusic
     def deploy_options_for(env)
       environment_options = options_from_file
       environment_options.merge!(options_from_file.fetch(env, {}))
-      Thor::CoreExt::HashWithIndifferentAccess.new(environment_options.merge(options))
+      Thor::CoreExt::HashWithIndifferentAccess.new(environment_options)
     end
 
     def options_from_file
