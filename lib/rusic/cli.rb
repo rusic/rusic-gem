@@ -21,10 +21,12 @@ module Rusic
       files = []
 
       files << Dir.glob(path.join('{layouts,ideas,pages,participant}', '*.liquid'))
+      files << Dir.glob(path.join('assets', '*.{jpg,jpeg,gif,png,ico,svg,tif,webp}'))
       files << Dir.glob(path.join('assets', '*.*'))
       files << Dir.glob(path.join('attributes.{yml,yaml}'))
 
       files.flatten!
+      files = files.uniq
       if options['watch']
         FileWatcher.new(%w[layouts/ ideas/ pages/ assets/ participant/]).watch(0.5) do |file, event|
           unless event == :delete
