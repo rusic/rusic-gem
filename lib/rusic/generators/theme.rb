@@ -42,6 +42,11 @@ module Rusic
         copy_file('templates/pages/about.html.liquid', "#{name}/pages/about.html.liquid")
       end
 
+      def snippets
+        empty_directory("#{name}/snippets")
+        copy_file('templates/snippets/navigation.html.liquid', "#{name}/snippets/navigation.html.liquid")
+      end
+
       def assets
         empty_directory("#{name}/assets")
         copy_file('templates/assets/bootstrap.css', "#{name}/assets/bootstrap.css")

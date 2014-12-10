@@ -20,13 +20,13 @@ module Rusic
       path = Pathname.new(Dir.pwd)
       files = []
 
-      files << Dir.glob(path.join('{layouts,ideas,pages,participant}', '*.liquid'))
+      files << Dir.glob(path.join('{layouts,ideas,pages,participant,snippets}', '*.liquid'))
       files << Dir.glob(path.join('assets', '*.*'))
       files << Dir.glob(path.join('attributes.{yml,yaml}'))
 
       files.flatten!
       if options['watch']
-        FileWatcher.new(%w[layouts/ ideas/ pages/ assets/ participant/ attributes.yml]).watch(0.5) do |file, event|
+        FileWatcher.new(%w[layouts/ ideas/ pages/ assets/ participant/ attributes.yml snippets/]).watch(0.5) do |file, event|
           unless event == :delete
             deployer = Rusic::Deployer.new(file)
             deployer.upload_files(deploy_options_for(env))

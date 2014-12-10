@@ -56,6 +56,8 @@ create  competition-theme/ideas/show.html.liquid
 create  competition-theme/ideas/edit.html.liquid
 create  competition-theme/pages
 create  competition-theme/pages/about.html.liquid
+create  competition-theme/snippets
+create  competition-theme/snippets/navigation.html.liquid
 create  competition-theme/assets
 create  competition-theme/assets/bootstrap.css
 create  competition-theme/assets/bootstrap.js
@@ -95,6 +97,7 @@ Saved ideas/index.html.liquid
 Saved ideas/new.html.liquid
 Saved ideas/show.html.liquid
 Saved pages/about.html.liquid
+Saved snippets/navigation.html.liquid
 Saved assets/bootstrap.css
 Saved assets/bootstrap.js
 Saved assets/cover.css
