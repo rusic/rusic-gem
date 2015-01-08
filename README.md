@@ -114,20 +114,21 @@ $ touch layouts/subdomain.html.liquid # in another process
 Saved layouts/subdomain.html.liquid
 ```
 
-### Deploy using a `.rusic` file
+### Deploy using a `.rusic.yml` file
 
 You can add a `.rusic.yml` file to your project directory and set your environments
 settings within this file. This file should be valid
 [YAML](http://www.yaml.org/start.html) and looks like this -
 
 ```yaml
-#
 api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 stage:
   theme: 2
 production:
-  api_key: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
   theme: 1
+local:
+  theme: 1
+  api_host: api.rusic.dev
 ```
 
 To deploy to production you need to run
