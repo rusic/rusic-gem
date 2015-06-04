@@ -22,7 +22,8 @@ module Rusic
           params_hash['theme']['custom_attributes_attributes'][i] = {
             'key' => key,
             'value' => options.fetch('value'),
-            'help_text' => options.fetch('help_text', '')
+            'help_text' => options.fetch('help_text', ''),
+            'input_type' => options.fetch('type', 'text')
           }
 
           if e_attr = existing_attributes[key]
