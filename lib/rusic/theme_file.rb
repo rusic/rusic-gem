@@ -10,7 +10,7 @@ module Rusic
 
     def uploader
       case "#{dirname.basename}"
-      when 'layouts', 'ideas', 'pages', 'participant', 'snippets'
+      when 'layouts', 'ideas', 'pages', 'participant', 'snippets', 'mailers'
         uploader = Uploaders::Template.new(self)
       when 'assets'
         case extname
