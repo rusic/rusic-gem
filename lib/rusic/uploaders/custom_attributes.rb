@@ -23,7 +23,8 @@ module Rusic
             'key' => key,
             'value' => options.fetch('value'),
             'help_text' => options.fetch('help_text', ''),
-            'input_type' => options.fetch('type', 'text')
+            'input_type' => options.fetch('type', 'text'),
+            'select_options' => options.fetch('select_options', nil)
           }
 
           if e_attr = existing_attributes[key]
