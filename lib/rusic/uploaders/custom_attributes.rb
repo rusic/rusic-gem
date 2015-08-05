@@ -23,9 +23,12 @@ module Rusic
             'key' => key,
             'value' => options.fetch('value'),
             'help_text' => options.fetch('help_text', ''),
-            'input_type' => options.fetch('type', 'text'),
-            'select_options' => options.fetch('select_options', nil)
+            'input_type' => options.fetch('type', 'text')
           }
+
+          if options.fetch('select_options', nil)
+            params_hash['theme']['custom_attributes_attributes'][i]['select_options'] = options.fetch('select_options')
+          end
 
           if e_attr = existing_attributes[key]
             params_hash['theme']['custom_attributes_attributes'][i]['id'] = e_attr['id']
