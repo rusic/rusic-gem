@@ -1,8 +1,13 @@
 module Rusic
   module Uploaders
     class Template < Base
+      def initialize(file, path)
+        @file = file
+        @path = path
+      end
+
       def perform
-        client["themes/#{theme}/templates/#{file.dirname.basename}/#{file.filename}"].put(params)
+        client["themes/#{theme}/templates/#{@path}"].put(params)
       end
 
       private
