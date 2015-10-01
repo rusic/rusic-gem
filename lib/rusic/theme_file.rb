@@ -9,9 +9,9 @@ module Rusic
     end
 
     def uploader
-      case "#{dirname.basename}"
-      when 'layouts', 'ideas', 'pages', 'participant', 'snippets', 'mailers'
-        uploader = Uploaders::Template.new(self)
+      case root_name
+      when 'layouts', 'ideas', 'pages', 'participant', 'snippets', 'mailers', 'reports'
+        uploader = Uploaders::Template.new(self, relative_path)
       when 'assets'
         case extname
         when '.css', '.js'
@@ -31,6 +31,22 @@ module Rusic
 
     def descriptor
       "#{dirname}/#{filename}"
+    end
+
+    def root_name
+      relative_path.each_filename.first
+    end
+
+    def directory
+      relative_path.to_s.chomp(filename.to_s)
+    end
+
+    def relative_path
+      pathname.relative_path_from(working_directory)
+    end
+
+    def working_directory
+      Pathname.new(Dir.pwd)
     end
 
     def dirname
