@@ -29,6 +29,7 @@ module Rusic
       if options['watch']
         FileWatcher.new(%w[layouts/ ideas/ pages/ assets/ participant/ attributes.yml snippets/ mailers/ reports/]).watch(0.5) do |file, event|
           unless event == :delete
+            file = Pathname.new(file).realdirpath.to_s
             deployer = Rusic::Deployer.new(file)
             deployer.upload_files(deploy_options_for(env))
           end
