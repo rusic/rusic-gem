@@ -1,0 +1,19 @@
+custom_attribute_collections:
+  awesome_group:
+    title: Group title
+    attributes:
+      some_nested_text:
+        value: Example
+        help_text: Example Help Text
+      some_other_text:
+        value: Example
+        help_text: Example Help Text
+  ok_group:
+    title: Group title
+    attributes:
+      some_nested_text:
+        value: Example2
+        help_text: Example Help Text
+      some_other_text:
+        value: Example2
+        help_text: Example Help Text
