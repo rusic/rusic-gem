@@ -1,19 +1,23 @@
 custom_attribute_collections:
   awesome_group:
-    title: Group title
+    title: Awesome Group Title
+    help_title: Do something awesome
+    help_body: Here is some help to being awesome
     attributes:
-      some_nested_text:
+      some_nested_text_1:
         value: Example
         help_text: Example Help Text
-      some_other_text:
+      some_other_text_1:
         value: Example
         help_text: Example Help Text
   ok_group:
-    title: Group title
+    title: OK Group Title
+    help_title: Do something average
+    help_body: Here is some help to being alright
     attributes:
-      some_nested_text:
+      some_nested_text_2:
         value: Example2
         help_text: Example Help Text
-      some_other_text:
+      some_other_text_2:
         value: Example2
         help_text: Example Help Text

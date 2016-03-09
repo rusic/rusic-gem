@@ -15,17 +15,19 @@ RSpec.describe Rusic::Uploaders::CustomAttributes do
       custom_attribute_collections: [
         {
           key: "awesome_group",
-          title: "Group title",
+          title: "Awesome Group Title",
+          help_title: "Do something awesome",
+          help_body: "Here is some help to being awesome",
           custom_attributes: [
             {
-            "key" => "some_nested_text",
+            "key" => "some_nested_text_1",
             "value" => "Example",
             "help_text" => "Example Help Text",
             "input_type" => "text",
             "select_options" => nil
             },
             {
-              "key" => "some_other_text",
+              "key" => "some_other_text_1",
               "value" => "Example",
               "help_text" => "Example Help Text",
               "input_type" => "text",
@@ -35,17 +37,19 @@ RSpec.describe Rusic::Uploaders::CustomAttributes do
         },
         {
           key: "ok_group",
-          title: "Group title",
+          title: "OK Group Title",
+          help_title: "Do something average",
+          help_body: "Here is some help to being alright",
           custom_attributes: [
             {
-              "key" => "some_nested_text",
+              "key" => "some_nested_text_2",
               "value" => "Example2",
               "help_text" => "Example Help Text",
               "input_type" => "text",
               "select_options" => nil
             },
             {
-              "key" => "some_other_text",
+              "key" => "some_other_text_2",
               "value" => "Example2",
               "help_text" => "Example Help Text",
               "input_type" => "text",
@@ -54,6 +58,6 @@ RSpec.describe Rusic::Uploaders::CustomAttributes do
           ]
         }
       ]
-     })
+    })
   end
 end
