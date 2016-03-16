@@ -1,8 +1,37 @@
+require 'pry'
+require 'awesome_print'
+
 module Rusic
   module Uploaders
     class CustomAttributes < Base
       def perform
-        client["themes/#{theme}"].put(params)
+        client["themes/#{theme}/custom_attribute_collections"].post(params.to_json, content_type: :json)
+      end
+
+      def params
+        parameters = {
+          custom_attribute_collections: []
+        }
+        attribute_collections.each do |attribute_collection_key, attribute_collection|
+          custom_attribute_collection = {
+            key: attribute_collection_key,
+            title: attribute_collection["title"],
+            help_title: attribute_collection.fetch('help_title', nil),
+            help_body: attribute_collection.fetch('help_body', nil),
+            custom_attributes: [],
+          }
+          attribute_collection["attributes"].each do |attribute_key, attribute|
+            custom_attribute_collection[:custom_attributes] << {
+              'key' => attribute_key,
+              'value' => attribute.fetch('value'),
+              'help_text' => attribute.fetch('help_text', ''),
+              'input_type' => attribute.fetch('type', 'string'),
+              'select_options' => attribute.fetch('select_options', nil),
+            }
+          end
+          parameters[:custom_attribute_collections] << custom_attribute_collection
+        end
+        parameters
       end
 
       private
@@ -11,38 +40,11 @@ module Rusic
         "Updating custom attributes"
       end
 
-      def params
-        params_hash = {
-          'theme' => {
-            'custom_attributes_attributes' => {}
-          }
-        }
-
-        attributes_from_file.each_with_index do |(key, options), i|
-          params_hash['theme']['custom_attributes_attributes'][i] = {
-            'key' => key,
-            'value' => options.fetch('value'),
-            'help_text' => options.fetch('help_text', ''),
-            'input_type' => options.fetch('type', 'text')
-          }
-
-          if options.fetch('select_options', nil)
-            params_hash['theme']['custom_attributes_attributes'][i]['select_options'] = options.fetch('select_options')
-          end
-
-          if e_attr = existing_attributes[key]
-            params_hash['theme']['custom_attributes_attributes'][i]['id'] = e_attr['id']
-          end
-        end
-        params_hash
+      def attribute_collections
+        attributes_file["custom_attribute_collections"]
       end
 
-      def existing_attributes
-        @existing_attributes ||= JSON.parse(client["themes/#{theme}"].get)
-        Hash[@existing_attributes.fetch('custom_attributes', []).map {|i| [i['key'], i] }]
-      end
-
-      def attributes_from_file
+      def attributes_file
         ::YAML::load_file(file.file) || {}
       end
     end

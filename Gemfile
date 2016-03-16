@@ -4,6 +4,10 @@ source 'http://rubygems.org'
 gemspec
 
 group :development do
-  gem 'guard'
-  gem 'guard-shell'
+  gem 'guard', '~> 2.13.0'
+  gem 'guard-shell', '~> 0.7.1'
+  gem 'pry'
+  gem 'rspec'
+  gem 'guard-rspec', require: false
+  gem 'awesome_print'
 end
