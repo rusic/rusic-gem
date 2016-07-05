@@ -6,11 +6,11 @@ require 'rusic/version'
 Gem::Specification.new do |spec|
   spec.name          = "rusic"
   spec.version       = Rusic::VERSION
-  spec.authors       = ['Chris Mytton', 'Paul Springett', 'Adam Butler', 'Peter Rhoades']
-  spec.email         = ['self@hecticjeff.net', 'paul@simpleweb.co.uk', 'adam@lab.io', 'createdbypete@gmail.com']
+  spec.authors       = ['Chris Mytton', 'Paul Springett', 'Adam Butler', 'Peter Rhoades', 'Mark J Smith']
+  spec.email         = ['self@hecticjeff.net', 'paul@simpleweb.co.uk', 'adam@lab.io', 'createdbypete@gmail.com', 'mark@markjs.net']
   spec.description   = 'Theme creation and deployment for the Rusic platform'
   spec.summary       = 'Generate and deploy themes to Rusic'
-  spec.homepage      = 'http://developer.rusic.com/'
+  spec.homepage      = 'http://docs.rusic.com/'
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
